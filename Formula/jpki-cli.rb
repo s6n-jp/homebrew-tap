@@ -18,13 +18,11 @@ class JpkiCli < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/siketyan/jpki-rs/releases/download/0.3.0/jpki-cli-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "47f77a6d374059caa48566806fc72e30c5e53a876b0851c9ac49bc07d5ae8117"
+    url "https://github.com/siketyan/jpki-rs/releases/download/0.3.0/jpki-cli-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "47f77a6d374059caa48566806fc72e30c5e53a876b0851c9ac49bc07d5ae8117"
 
-      def install
-        bin.install "jpki-cli"
-      end
+    def install
+      bin.install "jpki-cli"
     end
   end
 
