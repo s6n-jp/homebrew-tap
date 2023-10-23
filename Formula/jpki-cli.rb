@@ -12,7 +12,9 @@ class JpkiCli < Formula
   end
 
   def install
-    system "cargo", "install", *std_cargo_args
+    chdir "cli" do
+      system "cargo", "install", *std_cargo_args
+    end
   end
 
   test do
