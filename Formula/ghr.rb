@@ -1,8 +1,8 @@
 class Ghr < Formula
   desc "Yet another repository management with auto-attaching profiles"
   homepage "https://github.com/siketyan/ghr"
-  url "https://github.com/siketyan/ghr/archive/refs/tags/v0.3.11.tar.gz"
-  sha256 "d5583898f1d881b63585afe226bb3a83acf389c874aa7ca348662efe4b71bf76"
+  url "https://github.com/siketyan/ghr/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "272c0e7b393e070aa3056f59ecb03a7565a7c968d6d4dc816a393c87b7c739b6"
   license "MIT"
 
   bottle do
