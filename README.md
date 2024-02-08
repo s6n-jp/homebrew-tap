@@ -1,10 +1,10 @@
-# Siketyan Tap
+# s6n-jp Tap
 
 ## How do I install these formulae?
 
-`brew install siketyan/tap/<formula>`
+`brew install s6n-jp/tap/<formula>`
 
-Or `brew tap siketyan/tap` and then `brew install <formula>`.
+Or `brew tap s6n-jp/tap` and then `brew install <formula>`.
 
 ## Documentation
 
