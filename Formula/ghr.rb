@@ -6,11 +6,12 @@ class Ghr < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/s6n-jp/homebrew-tap/releases/download/ghr-0.4.2"
-    sha256 cellar: :any,                 arm64_ventura: "163034da472a1e7c6ecde119e56bb4707bdeee2019e3f4ad505c8791a37d3326"
-    sha256 cellar: :any,                 ventura:       "8fcc89c0cc48751cea983f1e6e6d45b687abaa0f28df7b18aa91e8eeadb724f2"
-    sha256 cellar: :any,                 monterey:      "d83c758d354677baa1443498fdc2e134ac772a50e3f2b07a8acad9633634e0ef"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c3d0edab94d15c2d0d8ff8ee09fa65f1e66a4f8b5ba8485a11e7dd1f433890d5"
+    root_url "https://github.com/s6n-jp/homebrew-tap/releases/download/ghr-0.4.3"
+    sha256 cellar: :any,                 arm64_sonoma:  "b296d36f2bb7d21f42ba0fdf30b5f07b306d37bed57b6d0112d4134a0b12be92"
+    sha256 cellar: :any,                 arm64_ventura: "063b51b898e11434f29323108753948d4d54671fb149b2a01760087582ffebc2"
+    sha256 cellar: :any,                 ventura:       "a66761527fec6279f47c22f41e8f8841e96f656c0e497d6623eb9691b348308f"
+    sha256 cellar: :any,                 monterey:      "70e1089a9339f0de771949128011b4a3a04ad554647078bc59fb8949bbae00a9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "412b5e6247e8a4cc243cf50cd64be1442c1ad1855302c444446639b8c9fd05ec"
   end
 
   depends_on "rust" => :build
