@@ -15,39 +15,29 @@ jobs:
           - macos-14
           - macos-15
     runs-on: ${{ matrix.os }}
+    env:
+      BOTTLES_DIR: ${{ format('{0}/bottles', github.workspace) }}
     steps:
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+      - name: Pre-test steps
+        uses: Homebrew/actions/pre-build@master
+        with:
+          bottles-directory: ${{ env.BOTTLES_DIR }}
 
       - name: Install dependencies
         if: ${{ matrix.os == 'ubuntu-22.04' || matrix.os == 'ubuntu-24.04' }}
         run: sudo apt update && sudo apt install libpcsclite1
 
-      - name: Cache Homebrew Bundler RubyGems
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ matrix.os }}-rubygems-
-
-      - name: Install Homebrew Bundler RubyGems
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: brew install-bundler-gems
-
-      - run: brew test-bot --only-cleanup-before
-
-      - run: brew test-bot --only-setup
-
       - run: brew test-bot --only-tap-syntax
 
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
+        working-directory: ${{ env.BOTTLES_DIR }}
 
-      - name: Upload bottles as artifact
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+      - name: Post-build steps
+        if: always()
+        uses: Homebrew/actions/post-build@master
         with:
-          name: bottles
-          path: '*.bottle.*'
+          runner: ${{ matrix.os }}
+          bottles-directory: ${{ env.BOTTLES_DIR }}
+          logs-directory: ${{ format('{0}/logs', env.BOTTLES_DIR) }}
+          upload-bottles: ${{ github.event_name == 'pull_request' }}
